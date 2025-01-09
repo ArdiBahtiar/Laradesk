@@ -6,7 +6,7 @@ use App\Models\Tickets;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class TodoController extends Controller
+class TicketsController extends Controller
 {
 // FUNCTION UNTUK SHOW DASHBOARD TIAP DEPT //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -75,11 +75,17 @@ class TodoController extends Controller
     public function create()
     {
         $userName = Auth::user()->name;
-        $userDept = Auth::user()->dept;
-        return view('todos.create', [
-            'userNameData' => $userName,
-            'userDeptData' => $userDept,
-        ]);
+        // $userDept = Auth::user()->dept;
+        $data = [
+            'category_name' => 'apps',
+            'page_name' => 'mailbox',
+            'has_scrollspy' => 0,
+            'scrollspy_offset' => '',
+        ];
+        return view('tickets.create', [
+            'requestor' => $userName,
+            // 'requestor_dept' => $userDept,
+        ])->with($data);
     }
 
     public function createManager()
@@ -107,7 +113,13 @@ class TodoController extends Controller
     public function store(Request $request)
     {
         Tickets::create($request->all());       // Todo manggil METHOD ::create($request dimasukkan ke all())
-        return redirect('/');                // ngembaliin ke routes/web.php ('/')
+        $data = [
+            'category_name' => 'apps',
+            'page_name' => 'mailbox',
+            'has_scrollspy' => 0,
+            'scrollspy_offset' => '',
+        ];
+        return redirect('/apps/mailbox')->with($data);                // ngembaliin ke routes/web.php ('/')
     }
 
     public function edit(Tickets $todo)

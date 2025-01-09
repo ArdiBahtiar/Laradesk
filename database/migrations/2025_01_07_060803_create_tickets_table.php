@@ -20,7 +20,7 @@ return new class extends Migration
             $table->enum('category', ['FourZ', 'Website', 'Helpdesk', 'Service', 'Internet', 'Other', 'Voucher']);
             $table->enum('status', ['on_Request', 'on_Progress', 'Pending', 'Finished'])->default('on_Request');
             $table->enum('urgency', ['Low', 'Medium', 'High']);
-            $table->boolean('is_sent');
+            $table->boolean('is_sent')->nullable();
             $table->date('datetime');
             // $table->enum('dept', ['admin', 'user', 'manager'])->default('user');
             $table->timestamps();

@@ -17,8 +17,8 @@
                             <div class="tab-title">
                                 <div class="row">
                                     <div class="col-md-12 col-sm-12 col-12 text-center mail-btn-container">
-                                        <a id="btn-compose-mail" class="btn btn-block" href="javascript:void(0);"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg></a>
-                                        {{-- <a id="btn-compose-wo" class="btn btn-block" href="javascript:void(0);"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg></a> --}}
+                                        {{-- <a id="btn-compose-mail" class="btn btn-block" href="javascript:void(0);"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg></a> --}}
+                                        <a id="btn-compose-mail" class="btn btn-block" href="{{ route('create.tickets') }}"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg></a>
                                     </div>
                                     <div class="col-md-12 col-sm-12 col-12 mail-categories-container">
 
@@ -917,13 +917,13 @@
                                     
                                             <p class="mail-content" data-mailTitle="Coba Invoice"></p>
                                     
-                                            <div class="invoice-00001">
+                                            <div class="invoice-00001 m-4">
                                                 <div class="content-section  animated animatedFadeInUp fadeInUp">
                                             
                                                     <div class="row inv--head-section">
                                             
                                                         <div class="col-sm-6 col-12">
-                                                            <h3 class="in-heading">IT WORK ORDER</h3>
+                                                            <h3 class="in-heading">CREATE IT WORK ORDER</h3>
                                                         </div>
                                                         <div class="col-sm-6 col-12 align-self-center text-sm-right">
                                                             <div class="company-info">
@@ -936,59 +936,54 @@
                                             
                                                     <div class="row inv--detail-section">
                                             
-                                                        <div class="col-sm-7 align-self-center">
-                                                            <p class="inv-to">NAME: <span class="inv-number text-primary">Testing</span></p>
+                                                        <div class="col-sm-6 align-self-center">
+                                                            <p class="inv-to form-label">NAME<input type="text" name="requestor" value="{{ Auth::user()->name }}" class="text-primary form-control" readonly></p>
                                                         </div>
-                                                        <div class="col-sm-5 align-self-center  text-sm-right order-sm-0 order-1">
-                                                            <p class="inv-detail-title">DATE/TIME: <span class="inv-number text-primary">22/10/2024</span></p>
+                                                        <div class="col-sm-6 align-self-center  text-sm-right order-sm-0 order-1">
+                                                            <p class="inv-detail-title form-label">DATE/TIME<input type="date" name="datetime" value="{{ date('Y-m-d') }}" class="text-primary form-control" readonly> </p>
                                                         </div>
                                                         
-                                                        <div class="col-sm-7 align-self-center">
-                                                            <p class="inv-customer-name">DEPT: <span class="inv-number text-primary">Sales</span></p>
-                                                            {{-- <p class="inv-street-addr">405 Mulberry Rd. Mc Grady, NC, 28649</p>
-                                                            <p class="inv-email-address">redq@company.com</p> --}}
+                                                        <div class="col-sm-6 align-self-center">
+                                                            <p class="inv-customer-name form-label">DEPT<input type="text" name="requestor_dept" value="{{ Auth::user()->dept }}" class="text-primary form-control" readonly></p>
                                                         </div>
-                                                        <div class="col-sm-5 align-self-center  text-sm-right order-2">
-                                                            {{-- <p class="inv-list-number"><span class="inv-title">Invoice Number : </span> <span class="inv-number">[invoice number]</span></p> --}}
-                                                            <p class="inv-list-number"><span class="inv-title">PHONE: </span> <span class="inv-number text-primary">[invoice number]</span></p>
-                                                            {{-- <p class="inv-created-date"><span class="inv-title">Invoice Date : </span> <span class="inv-date">20 Aug 2019</span></p>
-                                                            <p class="inv-due-date"><span class="inv-title">Due Date : </span> <span class="inv-date">26 Aug 2019</span></p> --}}
+                                                        <div class="col-sm-6 align-self-center  text-sm-right order-2">
+                                                            <p class="inv-list-number form-label"><span class="inv-title">PHONE</span> <input type="tel" name="requestor_phone" value="" class="text-primary form-control" readonly></p>
+                                                            
                                                         </div>
-                                                        {{-- <div class="col-12 order-3 d-flex justify-content-center"> --}}
-                                                        <div class="col-12 order-3 align-self-center mb-5">
+                                                        <div class="col-12 order-3 align-self-center mb-5 mt-3">
                                                             <p>CATEGORY: </p>
                                                             <table>
                                                                 <tr>
                                                                     <td>
-                                                                        <input type="checkbox" id="InputFourZ" disabled>
+                                                                        <input type="radio" name="category" id="InputFourZ" value="FourZ" disabled>
                                                                         <label for="InputFourZ" class="text-dark">FourZ</label>
                                                                     </td>
                                                                     <td>
-                                                                        <input type="checkbox" id="InputWebsite" disabled>
+                                                                        <input type="radio" name="category" id="InputWebsite" value="Website" disabled>
                                                                         <label for="InputWebsite" class="text-dark">Website</label>
                                                                     </td>
                                                                     <td>
-                                                                        <input type="checkbox" id="InputHelpdesk" disabled>
+                                                                        <input type="radio" name="category" id="InputHelpdesk" value="Helpdesk" disabled>
                                                                         <label for="InputHelpdesk" class="text-dark">Helpdesk</label>
                                                                     </td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td>
-                                                                        <input type="checkbox" id="InputService" disabled>
+                                                                        <input type="radio" name="category" id="InputService" value="Service" disabled>
                                                                         <label for="InputService" class="text-dark">Service/Repair/RMA</label>
                                                                     </td>
                                                                     <td>    
-                                                                        <input type="checkbox" id="InputInternet" disabled>
+                                                                        <input type="radio" name="category" id="InputInternet" value="Internet" disabled>
                                                                         <label for="InputInternet" class="text-dark">Internet Connection</label>
                                                                     </td>
                                                                     <td>
-                                                                        <input type="checkbox" id="InputOther" disabled>
+                                                                        <input type="radio" name="category" id="InputOther" value="Other" disabled>
                                                                         <label for="InputOther" class="text-dark">Other</label>
                                                                     </td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td>
-                                                                        <input type="checkbox" id="InputVoucher" disabled>
+                                                                        <input type="radio" name="category" id="InputVoucher" value="Voucher" disabled>
                                                                         <label for="InputVoucher" class="text-dark">Ticket/Voucher</label>
                                                                     </td>
                                                                 </tr>
@@ -996,53 +991,14 @@
                                                         </div>
                                                     </div>
                                             
-                                                    {{-- <div class="row inv--product-table-section">
-                                                        <div class="col-12">
-                                                            <div class="table-responsive">
-                                                                <table class="table">
-                                                                    <thead class="">
-                                                                        <tr>
-                                                                            <th scope="col">S.No</th>
-                                                                            <th scope="col">Items</th>
-                                                                            <th class="text-right" scope="col">Qty</th>
-                                                                            <th class="text-right" scope="col">Unit Price</th>
-                                                                            <th class="text-right" scope="col">Amount</th>
-                                                                        </tr>
-                                                                    </thead>
-                                                                    <tbody>
-                                                                        <tr>
-                                                                            <td>1</td>
-                                                                            <td>Electric Shaver</td>
-                                                                            <td class="text-right">20</td>
-                                                                            <td class="text-right">$300</td>
-                                                                            <td class="text-right">$2800</td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <td>2</td>
-                                                                            <td>Earphones</td>
-                                                                            <td class="text-right">49</td>
-                                                                            <td class="text-right">$500</td>
-                                                                            <td class="text-right">$7000</td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <td>3</td>
-                                                                            <td>Wireless Router</td>
-                                                                            <td class="text-right">30</td>
-                                                                            <td class="text-right">$500</td>
-                                                                            <td class="text-right">$3500</td>
-                                                                        </tr>
-                                                                    </tbody>
-                                                                </table>
-                                                            </div>
-                                                        </div>
-                                                    </div> --}}
-
                                                     <div class="row">
                                                         <div class="col-12">
                                                             <p>REQUEST DETAILS: </p>
-                                                            <div class="request-detail" style="height: 400px; width: 100%; border: 1px solid #DADADA">
-                                                                <p class="mx-2">awaw</p>
-                                                            </div>
+                                                            <textarea class="request-detail" 
+                                                                      style="height: 400px; width: 100%; border: 1px solid #DADADA; padding: 10px; box-sizing: border-box; resize: none;" 
+                                                                      placeholder="Write your detailed request here..." 
+                                                                      name="request_detail"
+                                                                      readonly></textarea>
                                                         </div>
                                                     </div>
                                                     
@@ -1051,87 +1007,32 @@
                                                             <p>STATUS: </p>
                                                         </div>
                                                         <div class="col-sm-6 align-self-center order-2">
-                                                            <div class="status-detail" style="height: 30px; border: 1px solid #DADADA">
-                                                                <p class="mx-2">awaw</p>
-                                                            </div>
+                                                            <input type="text" class="status-detail" style="height: 30px; width: 100%; border: 1px solid #DADADA" placeholder="Request Draft" readonly>
+                                                            <input type="hidden" name="status" value="on_Request">
                                                         </div>
                                                     </div>
-
+                                            
                                                     <div class="row my-3">
                                                         <div class="col-sm-6 align-self-center order-1 text-sm-right">
                                                             <p>URGENCY: </p>
                                                         </div>
-                                                        <div class="col-sm-6 align-self-center order-2">
+                                                        <div class="col-sm-6 order-2">
                                                             <table>
                                                                 <tr>
                                                                     <td>
-                                                                        <input type="checkbox" id="InputFourZ" disabled>
-                                                                        <label for="InputFourZ" class="text-dark mr-3">LOW</label>
+                                                                        <input type="radio" name="urgency" value="Low" id="InputUrgencyLow" disabled>
+                                                                        <label for="InputUrgencyLow" class="text-dark mr-3">LOW</label>
                                                                     </td>
                                                                     <td>
-                                                                        <input type="checkbox" id="InputWebsite" disabled>
-                                                                        <label for="InputWebsite" class="text-dark mr-3">MEDIUM</label>
+                                                                        <input type="radio" name="urgency" value="Medium" id="InputUrgencyMedium" disabled>
+                                                                        <label for="InputUrgencyMedium" class="text-dark mr-3">MEDIUM</label>
                                                                     </td>
                                                                     <td>
-                                                                        <input type="checkbox" id="InputHelpdesk" disabled>
-                                                                        <label for="InputHelpdesk" class="text-dark mr-3">HIGH</label>
+                                                                        <input type="radio" name="urgency" value="High" id="InputUrgencyHigh" disabled>
+                                                                        <label for="InputUrgencyHigh" class="text-dark mr-3">HIGH</label>
                                                                     </td>
                                                                 </tr>
                                                             </table>
-                                                        </div>
-                                                    </div>
-                                            
-                                                    <div class="row mt-4">
-                                                        <div class="col-sm-5 col-12 order-sm-0 order-1">
-                                                            <div class="inv--payment-info">
-                                                                <div class="row">
-                                                                    <div class="col-sm-12 col-12">
-                                                                        <h6 class=" inv-title">Payment Info:</h6>
-                                                                    </div>
-                                                                    <div class="col-sm-4 col-12">
-                                                                        <p class=" inv-subtitle">Bank Name: </p>
-                                                                    </div>
-                                                                    <div class="col-sm-8 col-12">
-                                                                        <p class="">Bank of America</p>
-                                                                    </div>
-                                                                    <div class="col-sm-4 col-12">
-                                                                        <p class=" inv-subtitle">Account Number : </p>
-                                                                    </div>
-                                                                    <div class="col-sm-8 col-12">
-                                                                        <p class="">1234567890</p>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-sm-7 col-12 order-sm-1 order-0">
-                                                            <div class="inv--total-amounts text-sm-right">
-                                                                <div class="row">
-                                                                    <div class="col-sm-8 col-7">
-                                                                        <p class="">Sub Total: </p>
-                                                                    </div>
-                                                                    <div class="col-sm-4 col-5">
-                                                                        <p class="">$13300</p>
-                                                                    </div>
-                                                                    <div class="col-sm-8 col-7">
-                                                                        <p class="">Tax Amount: </p>
-                                                                    </div>
-                                                                    <div class="col-sm-4 col-5">
-                                                                        <p class="">$700</p>
-                                                                    </div>
-                                                                    <div class="col-sm-8 col-7">
-                                                                        <p class=" discount-rate">Discount : <span class="discount-percentage">5%</span> </p>
-                                                                    </div>
-                                                                    <div class="col-sm-4 col-5">
-                                                                        <p class="">$700</p>
-                                                                    </div>
-                                                                    <div class="col-sm-8 col-7 grand-total-title">
-                                                                        <h4 class="">Grand Total : </h4>
-                                                                    </div>
-                                                                    <div class="col-sm-4 col-5 grand-total-amount">
-                                                                        <h4 class="">$14000</h4>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
                                                         </div>
                                                     </div>
                                             

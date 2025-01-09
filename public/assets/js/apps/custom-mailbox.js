@@ -70,17 +70,17 @@ $(document).ready(function() {
 	dynamicBadgeNotification('draftmail');
 
 	// Open Modal on Compose Button Click
-	$('#btn-compose-mail').on('click', function(event) {
-		$('#btn-send').show();
-		$('#btn-reply').hide();
-		$('#btn-fwd').hide();
-		$('#composeMailModal').modal('show');
+	// $('#btn-compose-mail').on('click', function(event) {
+	// 	$('#btn-send').show();
+	// 	$('#btn-reply').hide();
+	// 	$('#btn-fwd').hide();
+	// 	$('#composeMailModal').modal('show');
 
-		// Save And Reply Save
-		$('#btn-save').show();
-		$('#btn-reply-save').hide();
-		$('#btn-fwd-save').hide();
-	})
+	// 	// Save And Reply Save
+	// 	$('#btn-save').show();
+	// 	$('#btn-reply-save').hide();
+	// 	$('#btn-fwd-save').hide();
+	// })
 
 	/*
 		Init. fn. checkAll ==> Checkbox check all

@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TicketsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,6 +47,11 @@ Route::group(['middleware' => 'auth'] , function() {
         return view('dashboard')->with($data);
     });
 
+
+    Route::prefix('tickets')->group(function() {
+        Route::get('/create', [TicketsController::class, 'create'])->name('create.tickets');
+        Route::post('/store', [TicketsController::class, 'store'])->name('store.tickets');
+    });
 
 
     // APPS
