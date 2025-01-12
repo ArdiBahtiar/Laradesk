@@ -18,7 +18,9 @@ class TicketsController extends Controller
             'has_scrollspy' => 0,
             'scrollspy_offset' => '',
         ];
-        return view('pages.apps.apps_mailbox')->with($data);
+        
+        $tickets = Tickets::all();
+        return view('pages.apps.apps_mailbox', compact('tickets'))->with($data);
     }
 
     public function indexAdmin() 

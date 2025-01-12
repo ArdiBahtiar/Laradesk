@@ -47,6 +47,9 @@ Route::group(['middleware' => 'auth'] , function() {
         return view('dashboard')->with($data);
     });
 
+    Route::prefix('dashboard')->group(function() {
+        Route::get('/index', [TicketsController::class, 'index']);
+    });
 
     Route::prefix('tickets')->group(function() {
         Route::get('/create', [TicketsController::class, 'create'])->name('create.tickets');

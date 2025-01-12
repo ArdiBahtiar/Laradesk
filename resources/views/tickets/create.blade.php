@@ -26,7 +26,7 @@
                 <p class="inv-to form-label">NAME<input type="text" name="requestor" value="{{ Auth::user()->name }}" class="text-primary form-control" readonly></p>
             </div>
             <div class="col-sm-6 align-self-center  text-sm-right order-sm-0 order-1">
-                <p class="inv-detail-title form-label">DATE/TIME<input type="date" name="datetime" value="{{ date('Y-m-d') }}" class="text-primary form-control" readonly> </p>
+                <p class="inv-detail-title form-label">DATE/TIME<input type="date" value="{{ date('Y-m-d') }}" class="text-primary form-control" readonly> </p>
             </div>
             
             <div class="col-sm-6 align-self-center">
